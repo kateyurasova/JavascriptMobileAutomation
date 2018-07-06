@@ -2,41 +2,36 @@
 
 /* https://github.com/angular/protractor/blob/master/docs/toc.md */
 
-describe('my app', function() {
-
-
-  it('should automatically redirect to /view1 when location hash/fragment is empty', function() {
-    browser.get('index.html');
-    expect(browser.getLocationAbsUrl()).toMatch("/view1");
-  });
-
-
-  describe('view1', function() {
+describe('Protractor Demo App', function() {
+    let firstNumber = element(by.model('first'))
+    let secondNumber = element(by.model('second'))
+    let goButton = element(by.id('gobutton'))
+    let latestResult = element(by.binding('latest'))
 
     beforeEach(function() {
-      browser.get('index.html#!/view1');
-    });
+        browser.get('http://juliemr.github.io/protractor-demo/')
+    })
 
+    it('should have a title', function() {
+        expect(browser.getTitle()).toEqual('Super Calculator')
+    })
 
-    it('should render view1 when user navigates to /view1', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 1/);
-    });
+    it('should add one and two', function() {
+        firstNumber.sendKeys(1)
+        secondNumber.sendKeys(2)
 
-  });
+        goButton.click()
 
+        expect(latestResult.getText()).toEqual('3')
+    })
 
-  describe('view2', function() {
+    it('should add four and six', function() {
+        // Fill this in.
+        expect(latestResult.getText()).toEqual('10')
+    })
 
-    beforeEach(function() {
-      browser.get('index.html#!/view2');
-    });
-
-
-    it('should render view2 when user navigates to /view2', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 2/);
-    });
-
-  });
-});
+    it('should read the value from an input', function() {
+        firstNumber.sendKeys(1);
+        expect(firstNumber.getAttribute('value')).toEqual('1')
+    })
+})
