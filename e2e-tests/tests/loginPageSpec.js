@@ -3,6 +3,8 @@ describe('opening of the userPage with using of PageObject Pattern', function ()
     const BASE_URL = 'http://www.quizful.net/test'
     const USER_LOGIN = "MariaMitko"
     const USER_PASSWORD = "ZcysqGthtw13"
+    const USER_NAME = "MariaMitko"
+
 
     let mainPage = require('../pages/mainPage.js')
     let loginPage = require('../pages/loginPage.js')
@@ -18,8 +20,7 @@ describe('opening of the userPage with using of PageObject Pattern', function ()
 
     it('checking of the UserName', async function () {
         let userName = userPage.getUserName()
-        await expect(userName).toEqual('MariaMitko')
-        console.log("UserName test method was executed")
+        await expect(userName).toEqual(USER_NAME, `Actual user name is not equal to expected value: ${USER_NAME}`)
     })
 
     afterEach(async function () {
