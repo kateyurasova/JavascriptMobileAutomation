@@ -7,7 +7,9 @@ exports.config = {
     ],
 
     capabilities: {
-        'browserName': 'chrome'
+        'browserName': 'chrome',
+        shardTestFiles: true,
+        maxInstances: 4
     },
 
     baseUrl: 'http://www.quizful.net/test',
@@ -21,7 +23,7 @@ exports.config = {
         jasmine.getEnv().addReporter(new AllureReporter({
             resultsDir: 'allure-results'
         }));
-        jasmine.getEnv().afterEach(function(done){
+        jasmine.getEnv().afterEach(function (done) {
             browser.takeScreenshot().then(function (png) {
                 allure.createAttachment('Screenshot', function () {
                     return new Buffer(png, 'base64')
