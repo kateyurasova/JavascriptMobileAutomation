@@ -23,6 +23,11 @@ let loginPage = function () {
     }
 
     this.logIn = async function (userLogin, userPassword) {
+
+        let EC = protractor.ExpectedConditions
+        browser.wait(EC.presenceOf(element(by.name("loginForm.login"))), 10000,
+            "field for entering of login did no appear in 10 sec")
+
         await element(by.name("loginForm.login")).sendKeys(userLogin)
         await element(by.name("loginForm.password")).sendKeys(userPassword)
         await element(by.name('ok')).click()

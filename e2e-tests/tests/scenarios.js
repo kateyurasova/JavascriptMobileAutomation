@@ -13,12 +13,15 @@ describe('Protractor Demo App', function() {
         expect(browser.getTitle()).toEqual('Super Calculator')
     })
 
-    it('should add one and two', function() {
+    it('should add one and two', async function() {
         firstNumber.sendKeys(1)
         secondNumber.sendKeys(2)
-
         goButton.click()
 
+        let loginLink = element(by.xpath('//a[@href="/LoginAction.loginForm"]'))
+        let EC = protractor.ExpectedConditions
+        browser.wait(EC.presenceOf(element(by.xpath('//*[text()="3"]'))), 10000,
+            "Correct result of calculation of 1+2 is not presented in 3 seconds")
         expect(latestResult.getText()).toEqual('3')
     })
 

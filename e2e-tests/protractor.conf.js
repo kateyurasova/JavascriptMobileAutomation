@@ -10,10 +10,8 @@ exports.config = {
         'browserName': 'chrome'
     },
 
-    baseUrl: 'http://localhost:8000/',
-
+    baseUrl: 'http://www.quizful.net/test',
     framework: 'jasmine',
-
     jasmineNodeOpts: {
         defaultTimeoutInterval: 30000
     },

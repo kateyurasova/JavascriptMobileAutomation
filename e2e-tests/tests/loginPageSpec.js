@@ -17,8 +17,12 @@ describe('opening of the userPage with using of PageObject Pattern', function ()
     })
 
     it('checking of the UserName', async function () {
-        var userName = userPage.getUserName()
+        let userName = userPage.getUserName()
         await expect(userName).toEqual('MariaMitko')
         console.log("UserName test method was executed")
+    })
+
+    afterEach(async function () {
+        await userPage.clickLogOut()
     })
 })

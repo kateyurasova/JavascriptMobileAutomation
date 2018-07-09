@@ -22,4 +22,5 @@ describe('opening of the userPage with using of PageObject Pattern', function ()
         await expect(pageURL).toEqual("http://www.quizful.net/LoginAction.loginForm")
         console.log("Logout button test method was executed")
     })
+
 })

@@ -9,7 +9,6 @@ describe('Quizful tests', function () {
     let userPage = require('../pages/userPage.js')
 
     beforeEach(function () {
-
         browser.ignoreSynchronization = true
         browser.get(BASE_URL)
 
