@@ -9,7 +9,10 @@ exports.config = {
     capabilities: {
         'browserName': 'chrome',
         shardTestFiles: true,
-        maxInstances: 4
+        maxInstances: 4,
+        user: 'MariaMitko',
+        password: 'ZcysqGthtw13',
+        platformName: 'Android'
     },
 
     baseUrl: 'http://www.quizful.net/test',
