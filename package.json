@@ -7,6 +7,7 @@
   "license": "MIT",
   "devDependencies": {
     "babel": "^6.23.0",
+    "fs": "0.0.1-security",
     "jasmine-allure-reporter": "^1.0.2",
     "jasmine-core": "^2.4.1",
     "log4js": "^2.10.0",
