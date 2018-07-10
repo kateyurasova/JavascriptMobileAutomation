@@ -1,4 +1,3 @@
-
 describe('opening of the userPage with using of PageObject Pattern', function () {
 
     const BASE_URL = 'http://www.quizful.net/test'
@@ -8,6 +7,12 @@ describe('opening of the userPage with using of PageObject Pattern', function ()
     const log4js = require('log4js')
     let logger = log4js.getLogger()
     logger.level = 'info'
+    let fs = require('fs')
+    let logName = 'cheese.log' + Math.random()
+    log4js.configure({
+        appenders: {cheese: {type: 'file', filename: logName}},
+        categories: {default: {appenders: ['cheese'], level: 'info'}}
+    })
 
     let mainPage = require('../pages/mainPage.js')
     let loginPage = require('../pages/loginPage.js')
@@ -24,7 +29,7 @@ describe('opening of the userPage with using of PageObject Pattern', function ()
     })
 
     it('checking of the UserName', async function () {
-        allure.description("Allure Description!@@@")
+        //allure.description("Allure Description!@@@")
         logger.info('THEN Verify that user name is correct')
         let userName = userPage.getUserName()
         await expect(userName).toEqual(USER_NAME, `Actual user name is not equal to expected value: ${USER_NAME}`)
@@ -32,5 +37,8 @@ describe('opening of the userPage with using of PageObject Pattern', function ()
 
     afterEach(async function () {
         await userPage.clickLogOut()
+        fs.readFile(logName, function(err, data) {
+            allure.description(data)
+        })
     })
 })
