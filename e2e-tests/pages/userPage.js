@@ -5,11 +5,10 @@ var userPage = function () {
     let nameField = element(by.xpath('//*[@id="user-panel"]/li[1]/b/a'))
     let logoutLink = element(by.xpath('//*[@id="user-panel"]/li[7]/a'))
 
-    allure.createStep('user get Test',
-        this.getUserName = async function () {
-            let userName = await nameField.getText()
-            return userName
-        })
+    this.getUserName = async function () {
+        let userName = await nameField.getText()
+        return userName
+    }
 
     this.clickLogOut = async function () {
         await logoutLink.click()

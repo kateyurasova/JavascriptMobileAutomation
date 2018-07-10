@@ -29,7 +29,6 @@ describe('opening of the userPage with using of PageObject Pattern', function ()
     })
 
     it('checking of the UserName', async function () {
-        //allure.description("Allure Description!@@@")
         logger.info('THEN Verify that user name is correct')
         let userName = userPage.getUserName()
         await expect(userName).toEqual(USER_NAME, `Actual user name is not equal to expected value: ${USER_NAME}`)
@@ -37,8 +36,5 @@ describe('opening of the userPage with using of PageObject Pattern', function ()
 
     afterEach(async function () {
         await userPage.clickLogOut()
-        fs.readFile(logName, function(err, data) {
-            allure.description(data)
-        })
     })
 })
